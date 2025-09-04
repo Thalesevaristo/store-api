@@ -2,10 +2,10 @@ run:
 	@uvicorn store.main:app --reload
 
 precommit-install:
-	@poetry run pre-commit install
+	@uv run pre-commit install
 
 test:
-	@poetry run pytest
+	@uv run pytest
 
 test-matching:
-	@poetry run pytest -s -rx -k $(K) --pdb store ./tests/
+	@uv run pytest -s -rx -k $(K) --pdb store ./tests/
