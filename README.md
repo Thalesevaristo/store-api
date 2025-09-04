@@ -4,7 +4,7 @@
 TDD é uma sigla para `Test Driven Development`, ou Desenvolvimento Orientado a Testes. A ideia do TDD é que você trabalhe em ciclos.
 
 ### Ciclo do TDD
-![C4](/docs/img/img-tdd.png)
+![C4](/docs/images/tdd_graph.png)
 
 ### Vantagens do TDD
 - entregar software de qualidade;
@@ -35,15 +35,19 @@ Uma aplicação que:
 Desenvolvimento de uma aplicação simples a partir do TDD, que permite entender como criar tests com o `pytest`. Construindo testes de Schemas, Usecases e Controllers (teste de integração).
 
 ### Arquitetura
-|![C4](/docs/img/store.drawio.png)|
+|![C4](/docs/images/store_diagram.png)|
 |:--:|
-| Diagrama de C4 da Store API |
+| Diagrama da Store API |
 
 ### Banco de dados - MongoDB
-|![C4](/docs/img/product.drawio.png)|
-|:--:|
-| Database - Store API |
-
+|       | Product                  |
+| :---: | :----------------------: |
+| UUID4 | id                       |
+| str   | name                     |
+| str   | description              |
+| int   | quantity                 |
+| float | price                    |
+|       | __Database - Store API__ |
 
 ## StoreAPI
 ### Diagramas de sequência para o módulo de Produtos
@@ -171,9 +175,11 @@ sequenceDiagram
 
 ## Preparar ambiente
 
-Vamos utilizar Pyenv + Poetry, link de como preparar o ambiente abaixo:
+Vamos utilizar UV, link de como preparar o ambiente abaixo:
 
-[poetry-documentation](https://github.com/nayannanara/poetry-documentation/blob/master/poetry-documentation.md)
+ > O UV é um gerenciador de pacotes e projetos Python desenvolvido em Rust, o que garante alta velocidade e eficiência. Conta com uma documentação bem estruturada e reúne diversas funcionalidades em uma única ferramenta, sendo capaz de substituir tanto o Pyenv quanto o Poetry.
+
+[uv-documentation](https://docs.astral.sh/uv/)
 
 ## Links uteis de documentação
 [mermaid](https://mermaid.js.org/)
@@ -184,6 +190,9 @@ Vamos utilizar Pyenv + Poetry, link de como preparar o ambiente abaixo:
 
 [model-serializer](https://docs.pydantic.dev/dev/api/functional_serializers/#pydantic.functional_serializers.model_serializer)
 
-[mongo-motor](https://motor.readthedocs.io/en/stable/)
+ > O PyMongo é a biblioteca oficial do MongoDB para integração com Python, servindo como substituto do Mongo-Motor, que foi descontinuado. Para este projeto o Mongo-Motor só foi utilizado na parte dos testes, já que o suporte do pymongo para o cliente assíncrono ainda não possui total suporte.
 
-[pytest](https://docs.pytest.org/en/7.4.x/)
+[PyMongo-documentation](https://pymongo.readthedocs.io/en/stable/)
+
+
+[pytest](https://docs.pytest.org/en/stable/)
