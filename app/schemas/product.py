@@ -1,12 +1,13 @@
 from decimal import Decimal
-from typing import Annotated, Optional
+from typing import Annotated
 from bson import Decimal128
 from pydantic import AfterValidator, Field
-from store.schemas.base import BaseSchemaMixin, OutSchema
+from app.schemas.base import BaseSchemaMixin, OutSchema
 
 
 class ProductBase(BaseSchemaMixin):
     name: str = Field(..., description="Product name")
+    description: str = Field(..., description="Product description")
     quantity: int = Field(..., description="Product quantity")
     price: Decimal = Field(..., description="Product price")
     status: bool = Field(..., description="Product status")
@@ -28,9 +29,22 @@ Decimal_ = Annotated[Decimal, AfterValidator(convert_decimal_128)]
 
 
 class ProductUpdate(BaseSchemaMixin):
-    quantity: Optional[int] = Field(None, description="Product quantity")
-    price: Optional[Decimal_] = Field(None, description="Product price")
-    status: Optional[bool] = Field(None, description="Product status")
+    desciption: str | None = Field(
+        default=None,
+        description="Product description",
+    )
+    quantity: int | None = Field(
+        default=None,
+        description="Product quantity",
+    )
+    price: Decimal_ | None = Field(
+        default=None,
+        description="Product price",
+    )
+    status: bool | None = Field(
+        default=None,
+        description="Product status",
+    )
 
 
 class ProductUpdateOut(ProductOut):
